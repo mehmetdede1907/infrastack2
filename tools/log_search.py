@@ -1,10 +1,15 @@
 from crewai_tools import JSONSearchTool
 from crewai_tools import BaseTool
 from crewai import Task, Agent, Crew
+import os
 
+from dotenv import load_dotenv
 
+load_dotenv()
 
-log_search_tool = JSONSearchTool(json_path="data/log.json")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
+log_search_tool = JSONSearchTool(json_path="./data/logs.json")
 log_analyst = Agent(
     role="Log Analyst",
     goal="Collect, organize, and provide initial analysis of relevant logs for error investigation",
@@ -36,7 +41,7 @@ log_analysis_task = Task(
     2. A list of relevant INFO logs that provide context around the errors.
     3. A summary of findings, including:
        - The time range of the analyzed logs
-       - The main services involved in the errors
+       - The main services invlved in the oerrors
        - The most common error types or messages
        - Any notable patterns or correlations observed in the log data
     4. At least two specific log entry examples that illustrate key findings.
@@ -46,3 +51,16 @@ log_analysis_task = Task(
     agent=log_analyst,
     tools=[log_search_tool]
 )
+
+log_test_crew = Crew(
+    agents=[log_analyst],
+    tasks=[log_analysis_task],
+    verbose=True,
+    memory=True
+
+)
+
+result = log_test_crew.kickoff()
+
+from IPython.display import Markdown
+Markdown(result)
