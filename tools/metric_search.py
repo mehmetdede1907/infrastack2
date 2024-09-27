@@ -1,4 +1,4 @@
-from crewai import Task, Agent
+from crewai import Task, Agent,Crew
 from crewai_tools import JSONSearchTool
 
 import os
@@ -42,3 +42,14 @@ metric_analysis_task = Task(
     agent=metric_analyst,
     tools=[metric_search_tool]
 )
+
+log_test_crew = Crew(
+    agents=[metric_analyst],
+    tasks=[metric_analysis_task],
+    verbose=True,
+    memory=True
+
+)
+
+result = log_test_crew.kickoff()
+

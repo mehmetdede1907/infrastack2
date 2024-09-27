@@ -61,6 +61,3 @@ log_test_crew = Crew(
 )
 
 result = log_test_crew.kickoff()
-
-from IPython.display import Markdown
-Markdown(result)
