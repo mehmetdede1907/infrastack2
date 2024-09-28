@@ -41,14 +41,16 @@ log_analysis_task = Task(
     2. A list of relevant INFO logs that provide context around the errors.
     3. A summary of findings, including:
        - The time range of the analyzed logs
-       - The main services invlved in the oerrors
+       - The main services invlved in the errors
        - The most common error types or messages
        - Any notable patterns or correlations observed in the log data
     4. At least two specific log entry examples that illustrate key findings.
     
     This report should be concise but informative enough to guide further investigation by other agents.
     """,
+    output_file="log_analysis.md",
     agent=log_analyst,
+    async_execution=True, #for running same time with other anaysis
     tools=[log_search_tool]
 )
 
@@ -59,5 +61,3 @@ log_test_crew = Crew(
     memory=True
 
 )
-
-result = log_test_crew.kickoff()

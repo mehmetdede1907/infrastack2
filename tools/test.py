@@ -6,8 +6,8 @@ from sre_assistant import combined_analysis_task,sre_engineer
 
 # Create the SRE Assistant crew
 sre_crew = Crew(
-    agents=[log_analyst, metric_analyst, trace_analyst, sre_engineer],
-    tasks=[log_analysis_task, metric_analysis_task, trace_analysis_task, combined_analysis_task],
+    agents=[ metric_analyst, trace_analyst, sre_engineer],
+    tasks=[ metric_analysis_task, trace_analysis_task, combined_analysis_task],
     verbose=True
 )
 

@@ -10,7 +10,7 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Create the JSON search tool for metrics
-metric_search_tool = JSONSearchTool(json_path="data/metrics.json")
+metric_search_tool = JSONSearchTool(json_path="kaan_data/metrics.json")
 
 # Define the Metric Analyst agent
 metric_analyst = Agent(
@@ -39,7 +39,9 @@ metric_analysis_task = Task(
     3. Correlation between metrics and known error events
     4. Potential performance bottlenecks identified from the metrics
     """,
+    output_file= "metric_analysis.md",
     agent=metric_analyst,
+    async_execution=True, #for running same time with other anaysis
     tools=[metric_search_tool]
 )
 
@@ -51,5 +53,4 @@ log_test_crew = Crew(
 
 )
 
-result = log_test_crew.kickoff()
 

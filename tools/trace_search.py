@@ -9,7 +9,7 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Create the JSON search tool for traces
-trace_search_tool = JSONSearchTool(json_path="data/traces.json")
+trace_search_tool = JSONSearchTool(json_path="kaan_data/traces.json")
 
 # Define the Trace Analyst agent
 trace_analyst = Agent(
@@ -38,6 +38,8 @@ trace_analysis_task = Task(
     3. Any anomalies or unexpected behavior observed in the traces
     4. Potential bottlenecks or points of failure in the system based on trace analysis
     """,
+    output_file="trace_analysis.md",
     agent=trace_analyst,
+    async_execution=True, #for running same time with other anaysis
     tools=[trace_search_tool]
 )

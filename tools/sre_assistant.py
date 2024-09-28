@@ -31,6 +31,7 @@ combined_analysis_task = Task(
     4. Proposed solutions to address the identified problems
     5. Recommendations for system improvements and monitoring enhancements
     """,
-    context=[log_analysis_task,metric_analysis_task,trace_analysis_task],
+    context=[metric_analysis_task,trace_analysis_task],
+
     agent=sre_engineer
 )
