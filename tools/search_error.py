@@ -1,9 +1,10 @@
-from crewai import Agent, Task, Crew
+from crewai import Agent, Task
 from crewai_tools import SerperDevTool , RagTool, ScrapeWebsiteTool, FirecrawlCrawlWebsiteTool
 import os
 from data_aggregator import aggregate_data_task
 from metric_search import metric_analysis_task
 from trace_search import trace_analysis_task
+
 
 from dotenv import load_dotenv
 
@@ -24,26 +25,25 @@ web_searcher = Agent(
     cloud technologies, and performance optimization techniques.""",
     verbose=True,
     allow_delegation=False,
-    tools=[scrape_tool, search_tool]
+    tools=[scrape_tool, search_tool],
+    
 )
 
 web_search_task = Task(
     description="""
-    Analyze the provided system overview and performance data. Your task is to:
+    Analyze the aggregate_data and analysis of the errors from metric and trace analysis. Please give importance on interprocess communication while answering. For every part of the output you should always refer and explain and relate to the error anlaysis or aggregate data. Provide good reasons. Your task is to:
 
     1. Identify and research the root causes of the reported issues.
-    2. Propose detailed solutions for each identified problem.
+    2. Propose detailed solutions for each identified problem. You should be spesific to the project.
     3. Suggest improvements to prevent similar issues in the future.
-    4. Provide an in-depth analysis of the errors, particularly focusing on TimeoutError and DatabaseError.
+    4. Provide an in-depth analysis of the errors, particularly focusing on TimeoutErrors and DataBaseErrors.
 
     Use the search and scrape tools to gather information from relevant websites, including but not limited to 
-    https://sre.google/sre-book/introduction/. Pay special attention to best practices in SRE, 
-    microservices architecture, and performance optimization.
+    https://sre.google/sre-book/introduction/ and https://opentelemetry.io/docs/. 
 
     Your analysis should cover:
     - Detailed explanations of potential root causes
     - Step-by-step solutions for each issue
-    - Best practices for preventing similar problems
     - Recommendations for performance improvements
     - Insights into error handling and mitigation strategies
 
@@ -52,23 +52,19 @@ web_search_task = Task(
     agent=web_searcher,
     expected_output="""
     A comprehensive report containing:
-    0. Executive Summary
+    1. Executive Summary
        - Overview of key issues identified, with emphasis on interprocess communication problems. Include timing details of the errors
 
-    1. Root Cause Analysis:
+    2. Root Cause Analysis:
        - Detailed breakdown of each identified issue
        - Research-backed explanations of potential causes
 
-    2. Proposed Solutions:
+    3. Proposed Solutions:
        - Step-by-step solutions for each problem
        - Justification for each solution based on research
 
-    3. Improvement Suggestions:
-       - Long-term strategies to prevent similar issues
-       - Best practices for system reliability and performance
-
     4. Detailed Error Analysis:
-       - In-depth look at TimeoutError and DatabaseError
+       - In-depth look at TimeoutError
        - Strategies for error handling and prevention
 
     5. Performance Optimization Recommendations:
@@ -82,7 +78,8 @@ web_search_task = Task(
     The report should be thorough, well-structured, and provide actionable insights based on the latest 
     industry standards and best practices.
     """,
-    context=[aggregate_data_task, metric_analysis_task,trace_analysis_task]
+    context=[aggregate_data_task, metric_analysis_task,trace_analysis_task],
+    
 )
 
 

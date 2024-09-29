@@ -8,8 +8,8 @@ from search_error import web_search_task,web_searcher
 
 # Create the SRE Assistant crew
 sre_crew = Crew(
-    agents=[ metric_analyst, trace_analyst, data_aggregator,web_searcher],
-    tasks=[ metric_analysis_task, trace_analysis_task,aggregate_data_task,web_search_task],
+    agents=[ trace_analyst,metric_analyst, data_aggregator,web_searcher],
+    tasks=[  trace_analysis_task,metric_analysis_task, aggregate_data_task,web_search_task],
     verbose=True,
     memory= True
 )
