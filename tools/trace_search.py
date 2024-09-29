@@ -24,12 +24,13 @@ trace_analyst = Agent(
 trace_analysis_task = Task(
     description="""
     Analyze the distributed traces to identify bottlenecks and errors in request flows, focusing on:
-    1. Traces related to the error events identified in the log analysis
+    1. Give more importance on traces related to the error events.
     2. Service dependencies and their impact on request flow
     3. Timing of different spans within traces
     4. Any anomalies or unexpected behavior in the request flow
 
     Use the trace_search_tool to query and analyze the trace data.
+    Provide me report anyway.
     """,
     expected_output="""
     A report containing:

@@ -2,6 +2,8 @@ from crewai import Agent, Task, Crew
 from crewai_tools import SerperDevTool , RagTool, ScrapeWebsiteTool, FirecrawlCrawlWebsiteTool
 import os
 from data_aggregator import aggregate_data_task
+from metric_search import metric_analysis_task
+from trace_search import trace_analysis_task
 
 from dotenv import load_dotenv
 
@@ -50,6 +52,8 @@ web_search_task = Task(
     agent=web_searcher,
     expected_output="""
     A comprehensive report containing:
+    0. Executive Summary
+       - Overview of key issues identified, with emphasis on interprocess communication problems. Include timing details of the errors
 
     1. Root Cause Analysis:
        - Detailed breakdown of each identified issue
@@ -78,7 +82,7 @@ web_search_task = Task(
     The report should be thorough, well-structured, and provide actionable insights based on the latest 
     industry standards and best practices.
     """,
-    context=[aggregate_data_task]
+    context=[aggregate_data_task, metric_analysis_task,trace_analysis_task]
 )
 
 

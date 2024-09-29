@@ -39,9 +39,10 @@ aggregate_data_task = Task(
 
     1. Extracting key performance indicators, error events, and anomalies from both reports.
     2. Correlating data points across metrics and traces to identify potential causal relationships.
-    3. Summarizing the most critical issues affecting system performance and reliability.
-    4. Structuring the information in a format that facilitates easy querying and analysis by other agents.
-    5. Highlighting potential areas for further investigation or immediate action.
+    3. Correlating the interprocess comminication between services and errors. This is important
+    4. Summarizing the most critical issues affecting system performance and reliability.
+    5. Structuring the information in a format that facilitates easy querying and analysis by other agents.
+    6. Highlighting potential areas for further investigation or immediate action.
 
     Use your expertise to interpret the data and provide context where necessary. The output should be comprehensive yet concise, enabling efficient use by the Web Search Agent and Retrieval Agent.
     """,
