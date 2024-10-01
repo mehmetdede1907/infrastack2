@@ -6,6 +6,7 @@ from metric_search import metric_analysis_task
 from trace_search import trace_analysis_task
 
 
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -78,6 +79,7 @@ web_search_task = Task(
     The report should be thorough, well-structured, and provide actionable insights based on the latest 
     industry standards and best practices.
     """,
+    output_file="web_search.md",
     context=[aggregate_data_task, metric_analysis_task,trace_analysis_task],
     
 )
