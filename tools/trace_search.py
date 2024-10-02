@@ -28,9 +28,10 @@ trace_analysis_task = Task(
     2. Service dependencies and their impact on request flow
     3. Timing of different spans within traces
     4. Any anomalies or unexpected behavior in the request flow
+    5. Any other analysis could be related to error.
 
     Use the trace_search_tool to query and analyze the trace data.
-    Provide me report anyway.
+    Provide me detailed report anlaysis.
     """,
     expected_output="""
     A report containing:

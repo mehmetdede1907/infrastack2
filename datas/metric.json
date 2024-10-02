@@ -1,0 +1,187 @@
+[
+    {
+      "timestamp": "2023-10-01T12:00:00Z",
+      "metrics": [
+        {
+          "name": "cpu.usage",
+          "unit": "percent",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "auth-service",
+                "host.name": "server-1"
+              },
+              "value": 30.0
+            },
+            {
+              "attributes": {
+                "service.name": "product-service",
+                "host.name": "server-2"
+              },
+              "value": 35.0
+            }
+          ]
+        },
+        {
+          "name": "memory.usage",
+          "unit": "percent",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "auth-service",
+                "host.name": "server-1"
+              },
+              "value": 40.0
+            },
+            {
+              "attributes": {
+                "service.name": "product-service",
+                "host.name": "server-2"
+              },
+              "value": 45.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "timestamp": "2023-10-01T12:15:00Z",
+      "metrics": [
+        {
+          "name": "http.request.duration",
+          "unit": "ms",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "checkout-service",
+                "http.method": "POST",
+                "http.status_code": "504"
+              },
+              "value": 30000
+            }
+          ]
+        },
+        {
+          "name": "error.count",
+          "unit": "1",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "checkout-service",
+                "error.type": "TimeoutError"
+              },
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "timestamp": "2023-10-01T12:30:45Z",
+      "metrics": [
+        {
+          "name": "http.request.duration",
+          "unit": "ms",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "payment-service",
+                "http.method": "POST",
+                "http.status_code": "504"
+              },
+              "value": 30000
+            }
+          ]
+        },
+        {
+          "name": "error.count",
+          "unit": "1",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "payment-service",
+                "error.type": "TimeoutError"
+              },
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "timestamp": "2023-10-01T12:50:25Z",
+      "metrics": [
+        {
+          "name": "db.connection.errors",
+          "unit": "1",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "product-service",
+                "db.instance": "products_db"
+              },
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "cpu.usage",
+          "unit": "percent",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "product-service",
+                "host.name": "server-2"
+              },
+              "value": 80.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "timestamp": "2023-10-01T13:00:00Z",
+      "metrics": [
+        {
+          "name": "cpu.usage",
+          "unit": "percent",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "auth-service",
+                "host.name": "server-1"
+              },
+              "value": 25.0
+            },
+            {
+              "attributes": {
+                "service.name": "product-service",
+                "host.name": "server-2"
+              },
+              "value": 30.0
+            }
+          ]
+        },
+        {
+          "name": "memory.usage",
+          "unit": "percent",
+          "dataPoints": [
+            {
+              "attributes": {
+                "service.name": "auth-service",
+                "host.name": "server-1"
+              },
+              "value": 35.0
+            },
+            {
+              "attributes": {
+                "service.name": "product-service",
+                "host.name": "server-2"
+              },
+              "value": 40.0
+            }
+          ]
+        }
+      ]
+    }
+  ]

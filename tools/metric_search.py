@@ -24,13 +24,13 @@ metric_analyst = Agent(
 # Define the Metric Analysis task
 metric_analysis_task = Task(
     description="""
-    Analyze the system metrics to identify performance issues related to the errors found in the log analysis. Focus on:
+    Analyze the system metrics using metric_search tool identify errors focusing on:
     1. CPU and memory usage patterns
     2. Request duration metrics
     3. Error count metrics
     4. Any other relevant performance indicators
 
-    Use the metric_search_tool to query and analyze the metric data.
+    Use the metric_search_tool to query and analyze the metric data. Provide me detailed anlaysis report.
     """,
     expected_output="""
     A report containing:
