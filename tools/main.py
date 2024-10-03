@@ -37,12 +37,6 @@ async def analyze(
     with open("datas/trace.json", "wb") as buffer:
         shutil.copyfileobj(trace_file.file, buffer)
 
-    # Run the analysis
-    result = run_analysis()
-
-    return {"message": "Analysis completed", "result": result}
-
-def run_analysis():
     # Create the SRE Assistant crew
     sre_crew = Crew(
         agents=[trace_analyst, metric_analyst, data_aggregator, web_searcher],
@@ -52,26 +46,14 @@ def run_analysis():
     )
 
     # Run the crew
-    result = sre_crew.kickoff()
+    sre_crew.kickoff()
 
-    # Save verbose output
-    with open("verbose_output.txt", "w") as f:
-        f.write(str(result))
-
-    # Save task outputs
-    task_outputs = {}
-    for task_output in result.tasks_output:
-        filename = f"{task_output.task.name}.md"
-        with open(filename, "w") as f:
-            f.write(task_output.raw)
-        task_outputs[filename] = task_output.raw
-
-    return task_outputs
+    return {"message": "Analysis completed"}
 
 @app.get("/results")
 async def get_results():
     results = {}
-    for filename in ["aggregate_data.md", "metric_analysis.md", "trace_analysis.md", "web_searcher.md", "verbose_output.txt"]:
+    for filename in ["aggregatedata.json", "metric_analysis.md", "trace_analysis.md", "web_search.md"]:
         if os.path.exists(filename):
             with open(filename, "r") as f:
                 results[filename] = f.read()
