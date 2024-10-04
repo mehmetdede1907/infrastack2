@@ -1,0 +1,8 @@
+fastapi.middleware.cors
+fastapi
+shutil
+os
+crewai
+crewai_tools
+pydantic
+dotenv
