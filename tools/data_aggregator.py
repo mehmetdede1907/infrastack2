@@ -1,8 +1,8 @@
 
 from crewai import Task, Agent, Crew
-from log_search import log_analysis_task
-from metric_search import metric_analysis_task
-from trace_search import trace_analysis_task
+# from tools.log_search import log_analysis_task
+from tools.metric_search import metric_analysis_task
+from tools.trace_search import trace_analysis_task
 from pydantic import BaseModel
 import os
 from dotenv import load_dotenv

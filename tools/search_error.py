@@ -1,9 +1,9 @@
 from crewai import Agent, Task
 from crewai_tools import SerperDevTool , RagTool, ScrapeWebsiteTool, FirecrawlCrawlWebsiteTool
 import os
-from data_aggregator import aggregate_data_task
-from metric_search import metric_analysis_task
-from trace_search import trace_analysis_task
+from tools.data_aggregator import aggregate_data_task
+from tools.metric_search import metric_analysis_task
+from tools.trace_search import trace_analysis_task
 
 
 

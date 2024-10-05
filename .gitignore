@@ -2,3 +2,9 @@
 /.env
 /invenv
 /data
+/tools/venv
+/tools/.env
+/firebase.json
+/.firebaserc
+/tools/.gitignore
+/tools/requirements.txt
